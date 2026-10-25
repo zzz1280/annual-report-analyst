@@ -115,9 +115,13 @@ def best_excerpt(text: str, query: str, max_chars: int = 800) -> str:
 
 
 def chunk_doc(doc: dict, target_chars: int = 900) -> list[dict]:
-    """按章节标题 + 段落分块（保留页码）；表格单独成块，避免被正文稀释。"""
+    """按章节标题 + 段落分块（保留页码）；表格单独成块并按行分组。
+
+    每块带持久口径标签 scope（合并/母公司）：由报表标题与"主要会计数据"推导，
+    供检索降权与生成端口径声明使用。"""
     chunks: list[dict] = []
     section = "封面"
+    scope: str | None = None
     buf: list[str] = []
     pages: list[int] = []
 
@@ -129,6 +133,7 @@ def chunk_doc(doc: dict, target_chars: int = 900) -> list[dict]:
                 "chunk_id": len(chunks),
                 "text": text,
                 "section": section[:40],
+                "scope": scope,
                 "page_start": min(pages),
                 "page_end": max(pages),
             })
@@ -143,6 +148,13 @@ def chunk_doc(doc: dict, target_chars: int = 900) -> list[dict]:
             if (_HEADING.match(line) or _STATEMENT.match(line)) and len(line) <= 30:
                 flush()
                 section = line
+                # 口径标签：报表标题按前缀定口径；"主要会计数据/指标"为合并口径
+                if "主要会计数据" in line or "主要财务指标" in line:
+                    scope = "合并"
+                else:
+                    m = _STATEMENT.match(line)
+                    if m and m.group(1):
+                        scope = m.group(1)
             buf.append(line)
             pages.append(page["page"])
             if sum(map(len, buf)) >= target_chars:
@@ -158,6 +170,7 @@ def chunk_doc(doc: dict, target_chars: int = 900) -> list[dict]:
                     "chunk_id": len(chunks),
                     "text": piece,
                     "section": section[:40],
+                    "scope": scope,
                     "page_start": page["page"],
                     "page_end": page["page"],
                 })
@@ -266,4 +279,12 @@ class HybridIndex:
             # 未构建向量（无 embedding）时退化为纯关键词检索：零成本本地可用
             scores = sparse
         order = sorted(range(len(self.chunks)), key=lambda i: scores[i], reverse=True)[:k]
-        return [dict(self.chunks[i], score=round(scores[i], 4)) for i in order]
+        hits = [dict(self.chunks[i], score=round(scores[i], 4)) for i in order]
+        # 口径噪声抑制：查询未指明口径时，温和压低母公司口径分块（合并口径为年报默认）；
+        # 只动母公司块、用乘法，避免 r4b"全量加分淹没相关度"的覆辙
+        if not _query_scope(query):
+            for h in hits:
+                if h.get("scope") == "母公司":
+                    h["score"] = round(h["score"] * 0.7, 4)
+        hits.sort(key=lambda h: h["score"], reverse=True)
+        return hits

@@ -45,7 +45,8 @@ def main() -> None:
                 f.write(f"\n{'=' * 72}\n题目 id: {it['id']}\n问题: {it['question']}\n")
                 f.write(f"检索材料（按相关度排序，页码为年报页码；共检索到 {len(hits)} 块，展示前 {TOP_K_SHOW} 块）:\n")
                 for h in hits[:TOP_K_SHOW]:
-                    f.write(f"--- 第{h['page_start']}页 [{h['section'][:24]}] ---\n")
+                    tag = f"｜{h['scope']}口径" if h.get("scope") else ""
+                    f.write(f"--- 第{h['page_start']}页 [{h['section'][:24]}{tag}] ---\n")
                     f.write(best_excerpt(h["text"], it["question"], SHOW_CHARS) + "\n")
 
         json.dump(evidence, open(f"data/eval/evidence_{stem}.json", "w", encoding="utf-8"),

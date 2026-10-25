@@ -18,7 +18,10 @@ NOT_FOUND = "年报材料中未找到相关依据"
 SYSTEM = f"""你是严谨的年报问答助理。
 规则：只依据提供的材料回答；每个事实性论断末尾用 (p.页码) 标注来源，
 页码格式必须严格形如 (p.5)，禁止写成 (p.第5页) 或 (p.5-6页) 等变体，
-页码只能取自材料中标注的页码；材料不足时明确回答"{NOT_FOUND}"，禁止编造。"""
+页码只能取自材料中标注的页码；
+材料块标注了口径（合并/母公司）：题目未指明口径时必须使用合并口径数据
+（通常来自"主要会计数据"或合并报表），禁止用母公司口径数字冒充合并口径；
+材料不足时明确回答"{NOT_FOUND}"，禁止编造。"""
 
 
 def _ask(material: str, question: str, extra: str = "") -> str:
@@ -39,10 +42,13 @@ def _flags(audit: dict) -> int:
 
 def answer(index, question: str, k: int | None = None) -> dict:
     hits = index.search(question, k=k)
-    # 材料截取用"查询相关窗口"而非头部截断，关键数字不会被埋没
-    material = "\n\n".join(
-        f"[{c['section']}｜第{c['page_start']}-{c['page_end']}页]\n{best_excerpt(c['text'], question, 800)}"
-        for c in hits)
+    # 材料截取用"查询相关窗口"而非头部截断；块头携带口径标签，模型无需自行辨认
+    def _block(c: dict) -> str:
+        tag = f"｜{c['scope']}口径" if c.get("scope") else ""
+        return f"[{c['section']}｜第{c['page_start']}-{c['page_end']}页{tag}]\n" \
+               f"{best_excerpt(c['text'], question, 800)}"
+
+    material = "\n\n".join(_block(c) for c in hits)
     text = _ask(material, question)
     refusal_retry = audit_retry = False
 

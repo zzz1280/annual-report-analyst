@@ -1,0 +1,1066 @@
+{
+ "totals": {
+  "n": 106,
+  "nf": 12,
+  "gok": 94,
+  "cit": 94,
+  "s2": 80,
+  "ge1": 84,
+  "abad": 0
+ },
+ "detail": {
+  "600519_2023": [
+   {
+    "id": "600519_2023-000",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     2,
+     34
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-001",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     2
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-002",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     8
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-003",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     8
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-004",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     20
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-005",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     38
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-006",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     38
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-007",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     22
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-008",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     62
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-009",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     67
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-010",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     70
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-011",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     89
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-012",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     99
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-013",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     60
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-014",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-015",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-016",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     127
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-017",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     14
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-018",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     2
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-019",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     5
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-020",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     5
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600519_2023-021",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   }
+  ],
+  "000002_2023": [
+   {
+    "id": "000002_2023-001",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     15,
+     16
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-002",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     30
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-003",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     40
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-004",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-005",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     58
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-006",
+    "score": 0,
+    "not_found": false,
+    "cited_pages": [
+     68
+    ],
+    "grounded": true,
+    "secondlook_recovered": true
+   },
+   {
+    "id": "000002_2023-007",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     82
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-008",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     94
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-009",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     111
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-010",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     121
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-011",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     138
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-012",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-013",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     172
+    ],
+    "grounded": true,
+    "secondlook_recovered": true
+   },
+   {
+    "id": "000002_2023-017",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-018",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-019",
+    "score": 0,
+    "not_found": false,
+    "cited_pages": [
+     236
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-020",
+    "score": 1,
+    "not_found": false,
+    "cited_pages": [
+     121
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-021",
+    "score": 0,
+    "not_found": false,
+    "cited_pages": [
+     266
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000002_2023-024",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     303
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   }
+  ],
+  "000333_2023": [
+   {
+    "id": "000333_2023-000",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     5
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-001",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     48
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-002",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     22
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-003",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     33
+    ],
+    "grounded": true,
+    "secondlook_recovered": true
+   },
+   {
+    "id": "000333_2023-004",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     44
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-005",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     53
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-007",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     67
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-008",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     76
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-009",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     83
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-010",
+    "score": 1,
+    "not_found": false,
+    "cited_pages": [
+     91
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-011",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     99
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-012",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-013",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     114
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-014",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     122
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-015",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     130
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-016",
+    "score": 0,
+    "not_found": false,
+    "cited_pages": [
+     139
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-017",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     144
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-018",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     150
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-019",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     162
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-020",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     178
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-022",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     216
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-023",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     235
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "000333_2023-024",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     255
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   }
+  ],
+  "600036_2023": [
+   {
+    "id": "600036_2023-000",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     127
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-001",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-002",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     141
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-003",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     148
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-004",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     154
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-005",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     162
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-006",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     170
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-007",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     184
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-008",
+    "score": 0,
+    "not_found": false,
+    "cited_pages": [
+     191
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-010",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-011",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     220
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-012",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     232
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-013",
+    "score": 0,
+    "not_found": false,
+    "cited_pages": [
+     243
+    ],
+    "grounded": true,
+    "secondlook_recovered": true
+   },
+   {
+    "id": "600036_2023-014",
+    "score": 1,
+    "not_found": false,
+    "cited_pages": [
+     249
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-015",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     260
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-016",
+    "score": 0,
+    "not_found": false,
+    "cited_pages": [
+     32
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-017",
+    "score": 0,
+    "not_found": false,
+    "cited_pages": [
+     277
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-018",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-021",
+    "score": 0,
+    "not_found": false,
+    "cited_pages": [
+     241
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-023",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     201,
+     321
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "600036_2023-024",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     333
+    ],
+    "grounded": true,
+    "secondlook_recovered": true
+   }
+  ],
+  "300750_2023": [
+   {
+    "id": "300750_2023-000",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     222
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-001",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     14,
+     16
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-002",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     21
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-003",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     30
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-004",
+    "score": 1,
+    "not_found": false,
+    "cited_pages": [
+     13
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-005",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     51
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-006",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     59
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-007",
+    "score": 0,
+    "not_found": false,
+    "cited_pages": [
+     69
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-008",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     79,
+     80
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-009",
+    "score": 0,
+    "not_found": true,
+    "cited_pages": [],
+    "grounded": false,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-010",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     100
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-011",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     110
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-014",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     150
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-015",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     164
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-017",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     178,
+     182
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-018",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     183
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-020",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     195
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-021",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     23,
+     125
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-022",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     209
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-023",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     218
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   },
+   {
+    "id": "300750_2023-024",
+    "score": 2,
+    "not_found": false,
+    "cited_pages": [
+     224
+    ],
+    "grounded": true,
+    "secondlook_recovered": false
+   }
+  ]
+ }
+}

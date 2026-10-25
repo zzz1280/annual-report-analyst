@@ -120,3 +120,29 @@ def test_local_backend_dim():
     assert be.meta["backend"] == "local"
     vecs = be.embed(["营业收入", "研发投入"])
     assert len(vecs) == 2 and len(vecs[0]) == 512
+
+
+def test_unspecified_query_demotes_parent_scope(monkeypatch):
+    """口径噪声抑制：未指明口径的查询温和压低母公司块；显式指明时不干预。"""
+    chunks = [
+        {"chunk_id": 0, "text": "[母公司现金流量表] 经营活动产生的现金流量净额 | 36,698",
+         "section": "母公司现金流量表", "scope": "母公司", "page_start": 66, "page_end": 66},
+        {"chunk_id": 1, "text": "主要会计数据 经营活动产生的现金流量净额 66,593,247,721.09",
+         "section": "(一) 主要会计数据", "scope": "合并", "page_start": 5, "page_end": 5},
+    ]
+    idx = HybridIndex(chunks)
+    idx.vectors = [[1.0, 0.0], [1.0, 0.0]]  # 语义分完全相同：排序差异只能来自口径降权
+    idx.embedding_meta = {"backend": "fake", "model": "m"}
+
+    class FakeBackend:
+        meta = {"backend": "fake", "model": "m"}
+
+        def embed_query(self, query):
+            return [1.0, 0.0]
+
+    import report_analyst.embeddings as emb
+    monkeypatch.setattr(emb, "get_backend", lambda: FakeBackend())
+    # 未指明口径：母公司块被温和降权，合并块排前
+    assert idx.search("经营活动产生的现金流量净额是多少", k=2)[0]["chunk_id"] == 1
+    # 显式指明母公司：不降权，语义相同则保持原序（母公司块在前）
+    assert idx.search("母公司现金流量表中经营活动产生的现金流量净额", k=2)[0]["chunk_id"] == 0

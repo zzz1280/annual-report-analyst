@@ -80,6 +80,25 @@ def test_short_table_stays_single_chunk():
     assert len(chunks) == 1 and "营业收入 | 100" in chunks[0]["text"]
 
 
+def test_statement_scope_tagging():
+    """报表标题为分块打持久口径标签：合并/母公司。"""
+    doc = {"source": "t.pdf", "n_pages": 1,
+           "pages": [{"page": 1, "text": "合并资产负债表\n资产总计 100\n母公司资产负债表\n资产总计 50",
+                      "tables": []}]}
+    chunks = chunk_doc(doc)
+    assert chunks[0]["scope"] == "合并"
+    assert chunks[1]["scope"] == "母公司"
+
+
+def test_headline_scope_is_consolidated():
+    """"主要会计数据"是合并口径——茅台 021 类错误的病根就在这里被误标。"""
+    doc = {"source": "t.pdf", "n_pages": 1,
+           "pages": [{"page": 1, "text": "七、近三年主要会计数据和财务指标\n(一) 主要会计数据\n经营活动产生的现金流量净额 66,593,247,721.09",
+                      "tables": []}]}
+    chunks = chunk_doc(doc)
+    assert all(c["scope"] == "合并" for c in chunks if "现金流量净额" in c["text"])
+
+
 def test_best_excerpt_finds_relevant_window():
     from report_analyst.index import best_excerpt
 
