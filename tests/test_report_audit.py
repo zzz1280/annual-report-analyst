@@ -28,3 +28,11 @@ def test_citation_pages_not_audited():
     md = "详见 (p.999) 与 (p.123456)。"
     r = audit_numbers(md, SRC)
     assert r["untraced"] == [] and r["bad_grouping"] == []
+
+
+def test_trailing_chinese_comma_not_a_grouping_error():
+    """数字后紧跟中文逗号曾被正则吞入 token（如 "01，"）导致假阳性千分位告警。"""
+    md = "2021年01，归属于上市公司股东的净利润 74,734,071,550.75 元 (p.5)。"
+    r = audit_numbers(md, SRC)
+    assert r["bad_grouping"] == []
+    assert "74,734,071,550.75" not in r["untraced"]

@@ -56,3 +56,35 @@ def test_pages_preserved():
     chunks = chunk_doc(_doc())
     tbl = next(c for c in chunks if "资产总计" in c["text"])
     assert (tbl["page_start"], tbl["page_end"]) == (2, 2)
+
+
+def test_long_table_split_into_row_groups():
+    """超长表格必须按行分组切块且表头随每块重复——防止关键行被下游截断埋没。"""
+    tbl = [["科目", "金额"]] + [[f"项目{i:02d}", "5" * 50] for i in range(24)]
+    doc = {"source": "t.pdf", "n_pages": 1,
+           "pages": [{"page": 1, "text": "母公司资产负债表\n", "tables": [tbl]}]}
+    chunks = chunk_doc(doc)
+    tbl_chunks = [c for c in chunks if c["text"].startswith("[母公司资产负债表]")]
+    assert len(tbl_chunks) >= 2, "约 1400 字的表格应被切成多块"
+    for c in tbl_chunks:
+        assert "科目 | 金额" in c["text"], "表头必须随每块重复"
+        assert len(c["text"]) <= 1400, "分块不应远超上限"
+        assert (c["page_start"], c["page_end"]) == (1, 1)
+
+
+def test_short_table_stays_single_chunk():
+    tbl = [["科目", "金额"], ["营业收入", "100"], ["净利润", "50"]]
+    doc = {"source": "t.pdf", "n_pages": 1,
+           "pages": [{"page": 1, "text": "", "tables": [tbl]}]}
+    chunks = chunk_doc(doc)
+    assert len(chunks) == 1 and "营业收入 | 100" in chunks[0]["text"]
+
+
+def test_best_excerpt_finds_relevant_window():
+    from report_analyst.index import best_excerpt
+
+    text = "无关的开头内容。" + "甲" * 800 + "研发投入合计 621,507,535.87 元，占营业收入比例 0.42%。" + "乙" * 800
+    ex = best_excerpt(text, "本期研发投入合计是多少", 400)
+    assert "621,507,535.87" in ex, "截取窗口必须落在查询相关内容上，而不是头部"
+    assert best_excerpt("短文本", "短文本", 400) == "短文本"
+    assert best_excerpt("没有命中词的长文本" + "丙" * 900, "完全无关的查询词", 100).startswith("没有命中词")

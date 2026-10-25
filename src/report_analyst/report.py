@@ -29,14 +29,15 @@ def audit_numbers(report_md: str, sources: list[str]) -> dict:
     for src in sources:
         for t in _NUM.findall(src):
             try:
-                values.add(float(t.replace("，", "").replace(",", "")))
+                values.add(float(t.replace("，", "").replace(",", "").rstrip(".,，")))
             except ValueError:
                 pass
     bad_grouping: list[str] = []
     untraced: list[str] = []
     seen: set[str] = set()
     for t in _NUM.findall(text):
-        if t in seen:
+        t = t.rstrip("，,")  # 数字后紧跟中文逗号会被正则吞入 token（如 "01，"）
+        if not t or t in seen:
             continue
         seen.add(t)
         if ("," in t or "，" in t) and not _GROUPING.match(t):

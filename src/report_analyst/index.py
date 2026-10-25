@@ -40,8 +40,56 @@ def _detect_furniture(pages: list[dict]) -> set[str]:
     return {line for line, cnt in counter.items() if cnt >= threshold and len(line) <= 20}
 
 
-def _table_to_text(table: list[list[str]]) -> str:
-    return "\n".join(" | ".join(str(cell).strip() for cell in row) for row in table)
+TABLE_CHUNK_MAX = 1200
+
+
+def _table_pieces(section: str, tbl: list[list[str]], max_chars: int = TABLE_CHUNK_MAX) -> list[str]:
+    """表格转文本块：超长表格按行分组切成多块，首行（表头）随每块重复，
+    避免关键行在下游截断中被埋没。"""
+    prefix = f"[{section[:40]}] "
+    rows = [" | ".join(str(c).strip() for c in row) for row in tbl]
+    header = rows[0] if len(rows) > 2 else None
+    body = rows[1:] if header else rows
+    head_len = len(prefix) + (len(header) + 1 if header else 0)
+    pieces: list[list[str]] = []
+    cur: list[str] = []
+    cur_len = head_len
+    for r in body:
+        if cur and cur_len + len(r) + 1 > max_chars:
+            pieces.append(cur)
+            cur, cur_len = [], head_len
+        cur.append(r)
+        cur_len += len(r) + 1
+    if cur:
+        pieces.append(cur)
+    return [prefix + ((header + "\n") if header else "") + "\n".join(p) for p in pieces]
+
+
+def best_excerpt(text: str, query: str, max_chars: int = 800) -> str:
+    """超长分块的截取策略：取与查询 bigram 命中最密集的窗口，替代盲目的头部截断——
+    关键数字常在分块中后段，头部截断会把它们埋掉。"""
+    if len(text) <= max_chars:
+        return text
+    hits: list[int] = []
+    for bg in _bigrams(query):
+        pos = text.find(bg)
+        while pos != -1 and len(hits) < 800:
+            hits.append(pos)
+            pos = text.find(bg, pos + 1)
+    if not hits:
+        return text[:max_chars] + "…"
+    hits.sort()
+    lo = 0
+    best_cnt, best_start = 0, hits[0]
+    for hi in range(len(hits)):
+        while hits[hi] - hits[lo] > max_chars:
+            lo += 1
+        if hi - lo + 1 > best_cnt:
+            best_cnt, best_start = hi - lo + 1, hits[lo]
+    start = max(0, best_start - 120)
+    prefix = "…" if start > 0 else ""
+    suffix = "…" if start + max_chars < len(text) else ""
+    return f"{prefix}{text[start:start + max_chars]}{suffix}"
 
 
 def chunk_doc(doc: dict, target_chars: int = 900) -> list[dict]:
@@ -81,14 +129,16 @@ def chunk_doc(doc: dict, target_chars: int = 900) -> list[dict]:
             if len(tbl) < 2:  # 单行"表格"多为版面切分残留
                 continue
             flush()
-            # 表格分块带上所属章节前缀（如 [母公司资产负债表]），保留归属上下文
-            chunks.append({
-                "chunk_id": len(chunks),
-                "text": f"[{section[:40]}] " + _table_to_text(tbl),
-                "section": section[:40],
-                "page_start": page["page"],
-                "page_end": page["page"],
-            })
+            # 表格分块带上所属章节前缀（如 [母公司资产负债表]）保留归属上下文；
+            # 超长表格按行分组切块，避免关键行在下游截断中被埋没
+            for piece in _table_pieces(section, tbl):
+                chunks.append({
+                    "chunk_id": len(chunks),
+                    "text": piece,
+                    "section": section[:40],
+                    "page_start": page["page"],
+                    "page_end": page["page"],
+                })
     flush()
     return chunks
 

@@ -114,6 +114,10 @@ def ask(pdf: Path, question: str):
     console.print(Panel(result["answer"], title=f"Q: {question}", border_style="cyan"))
     console.print(f"[dim]引用页: {result['cited_pages'] or '（回答未含引用）'}｜"
                   f"证据页范围: {result['evidence_pages']}[/dim]")
+    nums = result.get("number_audit") or {}
+    if nums.get("bad_grouping") or nums.get("untraced"):
+        console.print(f"[red]⚠ 数字审计: 千分位异常 {nums['bad_grouping'] or '无'}｜"
+                      f"不可溯源 {nums['untraced'] or '无'}[/red]")
 
 
 if __name__ == "__main__":

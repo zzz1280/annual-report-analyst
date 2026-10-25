@@ -14,7 +14,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from report_analyst.index import HybridIndex  # noqa: E402
+from report_analyst.index import HybridIndex, best_excerpt  # noqa: E402
 from report_analyst.parse import load_doc  # noqa: E402
 
 ALL_STEMS = ["600519_2023", "000002_2023", "000333_2023", "600036_2023", "300750_2023"]
@@ -46,7 +46,7 @@ def main() -> None:
                 f.write(f"检索材料（按相关度排序，页码为年报页码；共检索到 {len(hits)} 块，展示前 {TOP_K_SHOW} 块）:\n")
                 for h in hits[:TOP_K_SHOW]:
                     f.write(f"--- 第{h['page_start']}页 [{h['section'][:24]}] ---\n")
-                    f.write(h["text"][:SHOW_CHARS] + "\n")
+                    f.write(best_excerpt(h["text"], it["question"], SHOW_CHARS) + "\n")
 
         json.dump(evidence, open(f"data/eval/evidence_{stem}.json", "w", encoding="utf-8"),
                   ensure_ascii=False)
