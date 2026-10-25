@@ -1,0 +1,23 @@
+{"id": "000333_2023-000", "question": "截至本报告披露之日，美的集团已累计回购公司股份多少股？", "reference_answer": "48,558,888", "evidence_page": 5, "type": "数字", "source_chunk": 3, "reviewed": true}
+{"id": "000333_2023-001", "question": "截至2023年底，美的集团有多少家工厂获得世界经济论坛“灯塔工厂”荣誉？", "reference_answer": "五家", "evidence_page": 14, "type": "数字", "source_chunk": 35, "reviewed": true}
+{"id": "000333_2023-002", "question": "美的无烟感系列烟机的吸力是多少立方米每分钟？", "reference_answer": "28", "evidence_page": 22, "type": "数字", "source_chunk": 51, "reviewed": true}
+{"id": "000333_2023-003", "question": "美的集团贵安美的云基地一期建设储备了多少个机位？", "reference_answer": "超过6万个", "evidence_page": 33, "type": "数字", "source_chunk": 67, "reviewed": true}
+{"id": "000333_2023-004", "question": "KR CYBERTECH KR 20 E机器人的有效载荷是多少？", "reference_answer": "20 kg", "evidence_page": 44, "type": "数字", "source_chunk": 83, "reviewed": true}
+{"id": "000333_2023-005", "question": "2023年，原材料成本占营业成本的比重是多少？", "reference_answer": "83.39%", "evidence_page": 53, "type": "数字", "source_chunk": 102, "reviewed": true}
+{"id": "000333_2023-007", "question": "公司计划启动库卡华东生产基地几期工程？", "reference_answer": "三期", "evidence_page": 67, "type": "数字", "source_chunk": 152, "reviewed": true}
+{"id": "000333_2023-008", "question": "赵文心的年龄是多少？", "reference_answer": "41", "evidence_page": 76, "type": "数字", "source_chunk": 180, "reviewed": true}
+{"id": "000333_2023-009", "question": "报告期内，美的集团股份有限公司的董事对公司有关事项是否提出异议？", "reference_answer": "否", "evidence_page": 83, "type": "事实", "source_chunk": 204, "reviewed": true}
+{"id": "000333_2023-010", "question": "2022年限制性股票激励计划中，因激励对象离职、职务调整等原因被回购注销的限制性股票总共有多少股？", "reference_answer": "1,322,500", "evidence_page": 91, "type": "数字", "source_chunk": 226, "reviewed": true}
+{"id": "000333_2023-011", "question": "芜湖美的厨卫电器制造有限公司的化学需氧量核定排放总量是多少？", "reference_answer": "70.898", "evidence_page": 99, "type": "数字", "source_chunk": 249, "reviewed": true}
+{"id": "000333_2023-012", "question": "佛山市顺德区美的电热电器制造有限公司排放的氮氧化物的浓度是多少？", "reference_answer": "11.6mg/m³", "evidence_page": 106, "type": "数字", "source_chunk": 266, "reviewed": true}
+{"id": "000333_2023-013", "question": "生活污水处理站排放的化学需氧量浓度为多少mg/L？", "reference_answer": "12.58", "evidence_page": 114, "type": "数字", "source_chunk": 283, "reviewed": true}
+{"id": "000333_2023-014", "question": "美的集团重庆美制冷设备有限公司的污水处理站排放的污水中，化学需氧量的浓度是多少？", "reference_answer": "165mg/L", "evidence_page": 122, "type": "数字", "source_chunk": 301, "reviewed": true}
+{"id": "000333_2023-015", "question": "根据承诺事项履行情况，若美的控股违反保证和承诺导致美的集团遭受损失，美的控股应在损失产生且金额明确之日起多少日内进行现金赔偿或补偿？", "reference_answer": "30日", "evidence_page": 130, "type": "数字", "source_chunk": 324, "reviewed": true}
+{"id": "000333_2023-016", "question": "美的集团股份有限公司2023年年度报告中，芜湖安得智联科技有限公司的连带责任保证金额是多少？", "reference_answer": "80,000", "evidence_page": 138, "type": "数字", "source_chunk": 355, "reviewed": true}
+{"id": "000333_2023-017", "question": "中国证券金融股份有限公司持有的人民币普通股数量是多少？", "reference_answer": "198,145,134", "evidence_page": 144, "type": "数字", "source_chunk": 378, "reviewed": true}
+{"id": "000333_2023-018", "question": "美的投资发展有限公司2.88%有担保票据2027年的募集资金未使用金额是多少？", "reference_answer": "0", "evidence_page": 150, "type": "数字", "source_chunk": 407, "reviewed": true}
+{"id": "000333_2023-019", "question": "根据表格，归属于少数股东的其他综合收益的税后净额本年金额是多少？", "reference_answer": "23,034", "evidence_page": 162, "type": "数字", "source_chunk": 447, "reviewed": true}
+{"id": "000333_2023-020", "question": "本集团的金融负债主要为以何种方式计量的金融负债？", "reference_answer": "以摊余成本计量的金融负债", "evidence_page": 178, "type": "事实", "source_chunk": 464, "reviewed": true}
+{"id": "000333_2023-022", "question": "截至2023年12月31日，本集团账龄超过一年的预付款项金额为多少元？", "reference_answer": "140,337,000", "evidence_page": 217, "type": "数字", "source_chunk": 496, "reviewed": true}
+{"id": "000333_2023-023", "question": "截至2023年12月31日，账龄超过一年的其他应付款金额是多少？", "reference_answer": "1,305,955,000", "evidence_page": 235, "type": "数字", "source_chunk": 512, "reviewed": true}
+{"id": "000333_2023-024", "question": "2023年12月31日，应收账款的人民币余额合计是多少？", "reference_answer": "20,327,279", "evidence_page": 255, "type": "数字", "source_chunk": 529, "reviewed": true}

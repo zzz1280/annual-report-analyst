@@ -1,0 +1,47 @@
+{
+ "000002": {
+  "summary": {
+   "run_at": "2026-10-25T12:38:07",
+   "n": 19,
+   "grounding_rate": 0.9474,
+   "accuracy_score2": 0.6842,
+   "accuracy_score_ge1": 0.7368
+  }
+ },
+ "000333": {
+  "summary": {
+   "run_at": "2026-10-25T12:39:44",
+   "n": 23,
+   "grounding_rate": 0.8696,
+   "accuracy_score2": 0.8261,
+   "accuracy_score_ge1": 0.8261
+  }
+ },
+ "300750": {
+  "summary": {
+   "run_at": "2026-10-25T12:44:09",
+   "n": 21,
+   "grounding_rate": 0.9524,
+   "accuracy_score2": 0.6667,
+   "accuracy_score_ge1": 0.8095
+  }
+ },
+ "600036": {
+  "summary": {
+   "run_at": "2026-10-25T12:41:44",
+   "n": 21,
+   "grounding_rate": 0.8095,
+   "accuracy_score2": 0.5238,
+   "accuracy_score_ge1": 0.619
+  }
+ },
+ "600519": {
+  "summary": {
+   "run_at": "2026-10-25T12:36:45",
+   "n": 22,
+   "grounding_rate": 0.9545,
+   "accuracy_score2": 0.8636,
+   "accuracy_score_ge1": 0.9545
+  }
+ }
+}

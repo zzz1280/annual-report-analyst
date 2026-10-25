@@ -1,16 +1,37 @@
-"""LLM 客户端封装：chat / chat_json / embed，兼容任意 OpenAI 兼容接口。"""
+"""LLM 客户端封装：chat / chat_json / embed，兼容任意 OpenAI 兼容接口。
+
+所有请求带限流退避重试：免费档/高峰期的 429 不应让批处理任务直接崩溃。
+"""
 
 from __future__ import annotations
 
 import json
 import re
-from typing import Any
+import time
+from typing import Any, Callable
 
-from openai import OpenAI
+from openai import OpenAI, RateLimitError
 
 from .config import settings
 
 _client: OpenAI | None = None
+
+MAX_RETRIES = 6
+BASE_DELAY = 2.0  # 指数退避：2s, 4s, 8s, 16s, 32s
+
+
+def _with_backoff(make_request: Callable) -> Any:
+    delay = BASE_DELAY
+    for attempt in range(MAX_RETRIES):
+        try:
+            return make_request()
+        except RateLimitError:
+            if attempt == MAX_RETRIES - 1:
+                raise
+            time.sleep(delay)
+            delay = min(delay * 2, 60)
+        except (json.JSONDecodeError, ValueError, KeyError):
+            raise  # 非限流错误不重试，由上层处理
 
 
 def client() -> OpenAI:
@@ -25,13 +46,17 @@ def client() -> OpenAI:
 def chat(messages: list[dict], model: str | None = None, temperature: float = 0.3,
          max_tokens: int = 4096) -> str:
     kwargs: dict = {"extra_body": settings.extra_body} if settings.extra_body else {}
-    resp = client().chat.completions.create(
-        model=model or settings.model,
-        messages=messages,  # type: ignore[arg-type]
-        temperature=temperature,
-        max_tokens=max_tokens,
-        **kwargs,
-    )
+
+    def _req():
+        return client().chat.completions.create(
+            model=model or settings.model,
+            messages=messages,  # type: ignore[arg-type]
+            temperature=temperature,
+            max_tokens=max_tokens,
+            **kwargs,
+        )
+
+    resp = _with_backoff(_req)
     return resp.choices[0].message.content or ""
 
 
@@ -75,6 +100,10 @@ def embed(texts: list[str], batch_size: int = 16) -> list[list[float]]:
     out: list[list[float]] = []
     for i in range(0, len(texts), batch_size):
         batch = texts[i:i + batch_size]
-        resp = client().embeddings.create(model=settings.embedding_model, input=batch)
-        out.extend(d.embedding for d in resp.data)
+
+        def _req(batch=batch):
+            return client().embeddings.create(model=settings.embedding_model, input=batch)
+
+        out.extend(d.embedding for d in _with_backoff(_req).data)
+        time.sleep(0.2)  # 批间节流，降低触发限流的概率
     return out

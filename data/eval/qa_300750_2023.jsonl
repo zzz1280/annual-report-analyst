@@ -1,0 +1,21 @@
+{"id": "300750_2023-000", "question": "根据2023年年度报告，公司拟向全体股东每10股派发现金分红和特别现金分红多少元（含税）？", "reference_answer": "50.28", "evidence_page": 2, "type": "数字", "source_chunk": 1, "reviewed": true}
+{"id": "300750_2023-001", "question": "公司目前全球锂电行业拥有多少座“灯塔工厂”？", "reference_answer": "3", "evidence_page": 14, "type": "数字", "source_chunk": 48, "reviewed": true}
+{"id": "300750_2023-002", "question": "2023年销售费用是多少？", "reference_answer": "1,795,444.05", "evidence_page": 21, "type": "数字", "source_chunk": 88, "reviewed": true}
+{"id": "300750_2023-003", "question": "根据表格，期末持有的其他证券投资金额是多少？", "reference_answer": "15,799.83", "evidence_page": 30, "type": "数字", "source_chunk": 153, "reviewed": true}
+{"id": "300750_2023-004", "question": "根据年报片段，公司生产经营所需的主要原材料包括哪些？", "reference_answer": "正极材料、负极材料、隔膜和电解液", "evidence_page": 39, "type": "事实", "source_chunk": 207, "reviewed": true}
+{"id": "300750_2023-005", "question": "忻榕在2020年01月担任了多少个公司的董事或独立董事职务？", "reference_answer": "1", "evidence_page": 51, "type": "数字", "source_chunk": 238, "reviewed": true}
+{"id": "300750_2023-006", "question": "2022年度利润分配方案中，每10股派发现金多少元人民币（含税）？", "reference_answer": "25.20", "evidence_page": 59, "type": "数字", "source_chunk": 275, "reviewed": true}
+{"id": "300750_2023-007", "question": "宁德时代溧阳厂区2023年氮氧化物排放量为多少吨/年？", "reference_answer": "62.505", "evidence_page": 69, "type": "数字", "source_chunk": 332, "reviewed": true}
+{"id": "300750_2023-008", "question": "2023年03月10日，厦门新能达科技有限公司向关联方采购商品委托加工电池产品的交易金额是多少？", "reference_answer": "78,334.27", "evidence_page": 80, "type": "数字", "source_chunk": 386, "reviewed": true}
+{"id": "300750_2023-009", "question": "报告期内审批对子公司担保额度合计（B1）是多少？", "reference_answer": "8", "evidence_page": 90, "type": "数字", "source_chunk": 434, "reviewed": true}
+{"id": "300750_2023-010", "question": "西藏鸿商资本投资有限公司通过华泰证券股份有限公司客户信用交易担保证券账户持有多少股？", "reference_answer": "19,684,217", "evidence_page": 100, "type": "数字", "source_chunk": 493, "reviewed": true}
+{"id": "300750_2023-011", "question": "截至报告期末，公司的流动比率是多少？", "reference_answer": "1.57", "evidence_page": 110, "type": "数字", "source_chunk": 540, "reviewed": true}
+{"id": "300750_2023-014", "question": "根据表格，专用设备的折旧年限范围是多少年？", "reference_answer": "3-25", "evidence_page": 150, "type": "数字", "source_chunk": 695, "reviewed": true}
+{"id": "300750_2023-015", "question": "青海时代新能源科技有限公司的优惠期间截止到哪一年？", "reference_answer": "2030年", "evidence_page": 164, "type": "事实", "source_chunk": 719, "reviewed": true}
+{"id": "300750_2023-017", "question": "本期账面原值中，购置金额合计为多少？", "reference_answer": "67,424.07", "evidence_page": 178, "type": "数字", "source_chunk": 800, "reviewed": true}
+{"id": "300750_2023-018", "question": "PT Feni Haltim的期末余额是多少？", "reference_answer": "23,920.03", "evidence_page": 183, "type": "数字", "source_chunk": 845, "reviewed": true}
+{"id": "300750_2023-020", "question": "法定盈余公积的期初余额是多少？", "reference_answer": "121,430.29", "evidence_page": 195, "type": "数字", "source_chunk": 918, "reviewed": true}
+{"id": "300750_2023-021", "question": "根据宁德时代2023年年度报告，现金及现金等价物净增加额是多少？", "reference_answer": "8,053,616.97", "evidence_page": 202, "type": "数字", "source_chunk": 952, "reviewed": true}
+{"id": "300750_2023-022", "question": "在其他主体中的权益中，处置非现金资产的公允价值是多少？", "reference_answer": "2,203,487.70", "evidence_page": 209, "type": "数字", "source_chunk": 982, "reviewed": true}
+{"id": "300750_2023-023", "question": "本期与联营企业采购商品的发生额是多少？", "reference_answer": "511,689.00", "evidence_page": 218, "type": "数字", "source_chunk": 1020, "reviewed": true}
+{"id": "300750_2023-024", "question": "根据年报第224页的数据，应收账款坏账准备的期末余额是多少？", "reference_answer": "191,766.53", "evidence_page": 224, "type": "数字", "source_chunk": 1052, "reviewed": true}

@@ -7,7 +7,7 @@ data/raw/
 data/parsed/
 data/reports/
 data/eval/*.jsonl
-!data/eval/qa_600519_2023.jsonl
+!data/eval/qa_*.jsonl
 !data/eval/agent_answers.jsonl
 !data/eval/agent_judges.jsonl
 data/eval/results/*
