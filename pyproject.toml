@@ -1,0 +1,22 @@
+[project]
+name = "report-analyst"
+version = "0.1.0"
+description = "AI 年报解读与风险提示：解析、指标计算、引用可溯源问答与评测"
+requires-python = ">=3.10"
+dependencies = [
+    "pdfplumber>=0.11",
+    "openai>=1.40",
+    "python-dotenv>=1.0",
+    "typer>=0.12",
+    "rich>=13.7",
+]
+
+[project.scripts]
+report-analyst = "report_analyst.cli:app"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
