@@ -9,7 +9,6 @@ import re
 from pathlib import Path
 
 from .config import settings
-from .llm import embed
 
 # 年报章节标题，如 "第三节 管理层讨论与分析"、"一、主营业务分析"
 _HEADING = re.compile(r"^\s*(第[一二三四五六七八九十百零]+节|[（(]?[一二三四五六七八九十]+[)）、])\s*\S+")
@@ -63,6 +62,29 @@ def _table_pieces(section: str, tbl: list[list[str]], max_chars: int = TABLE_CHU
     if cur:
         pieces.append(cur)
     return [prefix + ((header + "\n") if header else "") + "\n".join(p) for p in pieces]
+
+
+# 报表口径：加权幅度由 settings.scope_adjust 控制（默认 0=关闭，实测无可测收益）
+_SCOPE_PARENT = ("母公司", "本行", "本公司")
+_SCOPE_CONSOL = ("合并", "本集团", "集团")
+
+
+def _query_scope(query: str) -> str | None:
+    if any(k in query for k in _SCOPE_PARENT):
+        return "母公司"
+    if any(k in query for k in _SCOPE_CONSOL):
+        return "合并"
+    return None
+
+
+def _chunk_scope(chunk: dict) -> str | None:
+    """从分块的章节名/表格前缀推断口径；仅看头部，避免正文里"本行"等词的噪声。"""
+    for s in (str(chunk.get("section", "")), str(chunk.get("text", ""))[:24]):
+        if "母公司" in s:
+            return "母公司"
+        if "合并" in s:
+            return "合并"
+    return None
 
 
 def best_excerpt(text: str, query: str, max_chars: int = 800) -> str:
@@ -219,7 +241,8 @@ class HybridIndex:
         q_tokens = _bigrams(query)
         sparse = self._sparse_scores(q_tokens)
         if self.vectors:
-            # 混合检索：语义向量 + idf 加权关键词；后端必须与建索引时一致
+            # 混合检索：RRF 倒数排名融合（语义 + 关键词两个排序器话语权均衡），
+            # 后端必须与建索引时一致
             from .embeddings import get_backend
 
             backend = get_backend()
@@ -227,10 +250,18 @@ class HybridIndex:
                 raise RuntimeError(
                     f"嵌入后端与索引不一致：索引由 {self.embedding_meta} 构建，当前为 {backend.meta}。"
                     "请重建索引：python -m report_analyst parse <pdf>")
-            qv = backend.embed([query])[0]
-            scores = [settings.dense_weight * _cosine(qv, self.vectors[i])
-                      + (1 - settings.dense_weight) * sparse[i]
-                      for i in range(len(self.chunks))]
+            qv = backend.embed_query(query)
+            n = len(self.chunks)
+            w = settings.dense_weight
+            scores = [w * _cosine(qv, self.vectors[i]) + (1 - w) * sparse[i] for i in range(n)]
+            # 报表口径：仅在查询显式指明"母公司/合并/本行"且幅度非零时调整
+            if settings.scope_adjust:
+                scope = _query_scope(query)
+                if scope:
+                    for i in range(n):
+                        cs = _chunk_scope(self.chunks[i])
+                        if cs:
+                            scores[i] += settings.scope_adjust if cs == scope else -settings.scope_adjust
         else:
             # 未构建向量（无 embedding）时退化为纯关键词检索：零成本本地可用
             scores = sparse

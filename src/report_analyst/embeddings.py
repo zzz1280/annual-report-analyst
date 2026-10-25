@@ -10,6 +10,10 @@ from __future__ import annotations
 from .config import settings
 
 
+# bge 系列支持查询指令前缀；实测在本语料引入回归，默认关闭（机制保留，可按需启用）
+QUERY_INSTRUCTIONS = {}
+
+
 class ApiBackend:
     """OpenAI 兼容 /embeddings 接口（如智谱 embedding-3）。"""
 
@@ -20,6 +24,9 @@ class ApiBackend:
         from .llm import embed  # 延迟导入：本地后端场景无需配置 API key
 
         return embed(texts)
+
+    def embed_query(self, query: str) -> list[float]:
+        return self.embed([query])[0]
 
 
 class LocalBackend:
@@ -39,6 +46,12 @@ class LocalBackend:
 
     def embed(self, texts: list[str]) -> list[list[float]]:
         return [v.tolist() for v in self._get().embed(texts)]
+
+    def _query_text(self, query: str) -> str:
+        return QUERY_INSTRUCTIONS.get(self._model, "") + query
+
+    def embed_query(self, query: str) -> list[float]:
+        return [v.tolist() for v in self._get().embed([self._query_text(query)])][0]
 
 
 def get_backend() -> ApiBackend | LocalBackend:

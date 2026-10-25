@@ -43,7 +43,9 @@ class Settings:
 
     # 检索参数
     retrieve_k: int = 8
-    dense_weight: float = 0.7  # 混合排序中向量检索的权重
+    dense_weight: float = 0.7  # 混合排序中语义分的权重（原始余弦）
+    # 报表口径加权幅度：0 为关闭（实测在 106 题评测中无可测收益，详见 docs/评测报告.md）
+    scope_adjust: float = field(default_factory=lambda: float(os.getenv("LLM_SCOPE_ADJUST", "0")))
 
     # 目录约定
     data_dir: Path = field(default_factory=lambda: Path("data"))
