@@ -24,6 +24,13 @@ class Settings:
     embedding_model: str = field(
         default_factory=lambda: os.getenv("LLM_EMBEDDING_MODEL", "embedding-3")
     )
+    # 嵌入后端：auto（装了 fastembed 用本地，否则走 API）| api | local
+    embedding_backend: str = field(
+        default_factory=lambda: os.getenv("LLM_EMBEDDING_BACKEND", "auto")
+    )
+    local_embedding_model: str = field(
+        default_factory=lambda: os.getenv("LLM_LOCAL_EMBEDDING_MODEL", "BAAI/bge-small-zh-v1.5")
+    )
     # 智谱 GLM 默认开启思考模式：更慢更贵且长思考会挤占输出预算；结构化抽取场景建议关闭
     thinking: str = field(default_factory=lambda: os.getenv("LLM_THINKING", "disabled"))
 

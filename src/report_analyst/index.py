@@ -158,6 +158,7 @@ class HybridIndex:
     def __init__(self, chunks: list[dict]):
         self.chunks = chunks
         self.vectors: list[list[float]] | None = None
+        self.embedding_meta: dict | None = None
         self._tokens = [_bigrams(c["text"]) for c in chunks]
         # bigram 文档频率 → idf 权重：稀有词（如"派息"）比套话（如"是什么"）更有区分度
         from collections import Counter
@@ -182,7 +183,8 @@ class HybridIndex:
         out_dir = Path(out_dir)
         out_dir.mkdir(parents=True, exist_ok=True)
         data = {"chunks": self.chunks,
-                "vectors": [[round(x, 6) for x in v] for v in self.vectors] if self.vectors else None}
+                "vectors": [[round(x, 6) for x in v] for v in self.vectors] if self.vectors else None,
+                "embedding_meta": self.embedding_meta}
         path = out_dir / "index.json.gz"
         with gzip.open(path, "wt", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False)
@@ -197,27 +199,40 @@ class HybridIndex:
             data = json.load(f)
         obj = cls(data["chunks"])
         obj.vectors = data.get("vectors") or None
+        obj.embedding_meta = data.get("embedding_meta")
         return obj
 
     # ---------- 检索 ----------
 
-    def build(self) -> None:
+    def build(self, backend=None) -> None:
         if not self.chunks:
             raise ValueError("没有可索引的分块，请检查解析结果。")
-        self.vectors = embed([c["text"] for c in self.chunks])
+        if backend is None:
+            from .embeddings import get_backend
+
+            backend = get_backend()
+        self.embedding_meta = backend.meta
+        self.vectors = backend.embed([c["text"] for c in self.chunks])
 
     def search(self, query: str, k: int | None = None) -> list[dict]:
         k = k or settings.retrieve_k
         q_tokens = _bigrams(query)
         sparse = self._sparse_scores(q_tokens)
         if self.vectors:
-            # 混合检索：语义向量 + idf 加权关键词
-            qv = embed([query])[0]
+            # 混合检索：语义向量 + idf 加权关键词；后端必须与建索引时一致
+            from .embeddings import get_backend
+
+            backend = get_backend()
+            if self.embedding_meta and backend.meta != self.embedding_meta:
+                raise RuntimeError(
+                    f"嵌入后端与索引不一致：索引由 {self.embedding_meta} 构建，当前为 {backend.meta}。"
+                    "请重建索引：python -m report_analyst parse <pdf>")
+            qv = backend.embed([query])[0]
             scores = [settings.dense_weight * _cosine(qv, self.vectors[i])
                       + (1 - settings.dense_weight) * sparse[i]
                       for i in range(len(self.chunks))]
         else:
-            # 未构建向量（无 embedding API）时退化为纯关键词检索：零成本本地可用
+            # 未构建向量（无 embedding）时退化为纯关键词检索：零成本本地可用
             scores = sparse
         order = sorted(range(len(self.chunks)), key=lambda i: scores[i], reverse=True)[:k]
         return [dict(self.chunks[i], score=round(scores[i], 4)) for i in order]
