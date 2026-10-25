@@ -8,7 +8,10 @@ data/parsed/
 data/reports/
 data/eval/*.jsonl
 !data/eval/qa_*.jsonl
+!data/eval/questions_*.jsonl
 !data/eval/agent_answers.jsonl
 !data/eval/agent_judges.jsonl
+!data/eval/agent53_answers_*.jsonl
+data/eval/dossier_*.txt
 data/eval/results/*
 !data/eval/results/*.json
